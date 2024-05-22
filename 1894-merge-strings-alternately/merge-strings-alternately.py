@@ -6,11 +6,10 @@ class Solution(object):
         :rtype: str
         """
         result = []
-        i = 0
-        while i < len(word1) or i < len(word2):
-            if i < len(word1):
-                result.append(word1[i])
-            if i < len(word2):
-                result.append(word2[i])
-            i += 1
+        minLength = min(len(word1), len(word2))
+
+        for i in range(minLength):
+            result.extend([word1[i], word2[i]])
+        result.extend([word1[minLength:], word2[minLength:]])
+
         return ''.join(result)
