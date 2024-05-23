@@ -15,7 +15,7 @@ class Solution(object):
 
         largest = ""
         i = 1
-        while i < max(len(str1), len(str2)) + 1:
+        while i < min(len(str1), len(str2)) + 1:
             if len(str1) % i == 0 and len(str2) % i == 0:
                 x = str1[:i]
                 if divides(str1, x) and divides(str2, x):
