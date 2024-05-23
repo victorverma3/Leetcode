@@ -5,22 +5,17 @@ class Solution(object):
         :type str2: str
         :rtype: str
         """
-        def divides(s, x):
-            if s == x:
-                return True
-            elif s[:len(x)] != x:
-                return False
-            else:
-                return divides(s[len(x):], x)
-
         largest = ""
-        i = 1
-        while i < min(len(str1), len(str2)) + 1:
-            if len(str1) % i == 0 and len(str2) % i == 0:
-                x = str1[:i]
-                if divides(str1, x) and divides(str2, x):
-                    largest = x
-            i += 1
-        return largest
+
+        if str1 + str2 != str2 + str1:
+            return ""
+        elif len(str1) == len(str2):
+            return str1
+        elif len(str1) > len(str2):
+            return self.gcdOfStrings(str1[len(str2):], str2)
+        else:
+            return self.gcdOfStrings(str1, str2[len(str1):])
+
+
             
         
