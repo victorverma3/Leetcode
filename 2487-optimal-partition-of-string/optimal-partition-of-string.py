@@ -4,18 +4,18 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        strings = []
+        count = 0
         curr_string = []
         curr_letters = set()
         for i in s:
             if i in curr_letters:
-                strings.append("".join(curr_string))
+                count += 1
                 curr_string = [i]
                 curr_letters = set([i])
             else:
                 curr_string.append(i)
                 curr_letters.add(i)
         if curr_string:
-            strings.append("".join(curr_string))
-        return len(strings)
+            count += 1
+        return count
         
