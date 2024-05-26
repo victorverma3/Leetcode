@@ -17,10 +17,8 @@ class Solution(object):
         prev = head
         curr = head.next
         while curr.next and curr.next.next:
-            print(prev.val, curr.val)
             prev = prev.next
             curr = curr.next.next
-        print(prev.val)
         prev.next = prev.next.next
         return head
         
