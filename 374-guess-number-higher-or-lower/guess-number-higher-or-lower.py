@@ -18,7 +18,7 @@ class Solution(object):
         if guess(right) == 0:
             return right
         while left <= right:
-            mid = (left + right) >> 1
+            mid = (left + right) // 2
             g = guess(mid)
             if g == 0:
                 return mid
