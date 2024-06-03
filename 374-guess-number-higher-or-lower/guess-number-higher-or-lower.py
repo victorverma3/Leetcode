@@ -13,10 +13,12 @@ class Solution(object):
         """
         left = 1
         right = n
-        if guess(left) == 0:
+        if guess(1) == 0:
             return left
-        if guess(right) == 0:
+        if guess(n) == 0:
             return right
+        left = 1
+        right = n
         while left <= right:
             mid = (left + right) // 2
             g = guess(mid)
