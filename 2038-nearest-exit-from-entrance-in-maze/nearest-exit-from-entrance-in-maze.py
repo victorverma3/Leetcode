@@ -22,12 +22,13 @@ class Solution(object):
                 c = node[1]
                 if maze[r][c] == "+":
                     continue
-                if maze[r][c] == "." and node != tuple(entrance) and (r in [0, m-1] or c in [0, n-1]):
-                    length = 0
-                    while parents[node] is not None:
-                        length += 1
-                        node = parents[node]
-                    return length
+                if r in [0, m-1] or c in [0, n-1]:
+                    if maze[r][c] == "." and node != tuple(entrance):
+                        length = 0
+                        while parents[node] is not None:
+                            length += 1
+                            node = parents[node]
+                        return length
                 for d in directions:
                     new = (r+d[0], c+d[1])
                     if 0 <= new[0] < m and 0 <= new[1] < n and new not in visited:
