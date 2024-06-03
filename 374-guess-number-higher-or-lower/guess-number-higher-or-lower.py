@@ -11,12 +11,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        left = 1
-        right = n
         if guess(1) == 0:
-            return left
+            return 1
         if guess(n) == 0:
-            return right
+            return n
         left = 1
         right = n
         while left <= right:
