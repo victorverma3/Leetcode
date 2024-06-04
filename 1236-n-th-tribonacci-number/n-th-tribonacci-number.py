@@ -8,11 +8,10 @@ class Solution(object):
             return n
         if n == 2:
             return 1
-            
-        memo = [0] * (n+1)
-        memo[0], memo[1], memo[2] = 0, 1, 1
+
+        one, two, three = 0, 1, 1
 
         for i in range(3, n+1):
-            memo[i] = memo[i-1] + memo[i-2] + memo[i-3]
+            one, two, three = two, three, one + two + three
         
-        return memo[n]
+        return three
