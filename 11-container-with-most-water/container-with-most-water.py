@@ -5,15 +5,13 @@ class Solution(object):
         :rtype: int
         """
         max_water = 0
-        i = 0
-        j = len(height) - 1
-        while i < j:
-            temp_height = min(height[i], height[j])
-            temp_width = j-i
-            max_water = max(max_water, temp_height * temp_width)
-            if height[i] < height[j]:
-                i += 1
+        l = 0
+        r = len(height) - 1
+        while l < r:
+            water = min(height[l], height[r]) * (r - l)
+            max_water = max(water, max_water)
+            if height[l] <= height[r]:
+                l += 1
             else:
-                j -= 1
+                r -= 1
         return max_water
-        
