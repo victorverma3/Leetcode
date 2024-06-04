@@ -4,10 +4,11 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
-        if n == 1 or n == 2:
+        if n < 2:
+            return n
+        if n == 2:
             return 1
+            
         memo = [0] * (n+1)
         memo[0], memo[1], memo[2] = 0, 1, 1
 
