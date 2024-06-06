@@ -5,10 +5,14 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
+
+        if k == len(nums):
+            return nums
+
         frequencies = defaultdict(int)
         for i in nums:
             frequencies[i] += 1
-        freq = [(key, frequencies[key]) for key in frequencies.keys()]
+        freq = [(key, val) for key, val in frequencies.items()]
 
         def mergesort(array):
             if len(array) < 2:
