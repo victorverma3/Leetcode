@@ -4,7 +4,6 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
-        cities = set(i for i in range(len(isConnected)))
         visited = set()
 
         def dfs(source, connections, visited):
@@ -15,7 +14,7 @@ class Solution(object):
                     dfs(j, connections, visited)
 
         provinces = 0
-        for c in cities:
+        for c in range(len(isConnected)):
             if c not in visited:
                 dfs(c, isConnected, visited)
                 provinces += 1
