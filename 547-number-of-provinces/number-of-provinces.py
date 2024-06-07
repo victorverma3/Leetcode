@@ -4,7 +4,7 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
-        cities = set([i for i in range(len(isConnected))])
+        cities = set(i for i in range(len(isConnected)))
         visited = set()
 
         def dfs(source, connections, visited):
