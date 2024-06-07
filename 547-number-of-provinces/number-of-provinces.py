@@ -7,11 +7,11 @@ class Solution(object):
         visited = set()
 
         def dfs(source, connections, visited):
-            links = [j for j in range(len(isConnected)) if j not in visited]
-            for j in links:
-                if connections[source][j] == 1:
-                    visited.add(j)
-                    dfs(j, connections, visited)
+            for j in range(len(isConnected)):
+                if j not in visited:
+                    if connections[source][j] == 1:
+                        visited.add(j)
+                        dfs(j, connections, visited)
 
         provinces = 0
         for c in range(len(isConnected)):
