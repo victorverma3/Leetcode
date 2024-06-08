@@ -8,10 +8,10 @@ class Solution(object):
         nums_set = set(nums)
         for n in nums:
             if n-1 not in nums_set:
-                sequence = []
+                count = 0
                 i = n
                 while i in nums_set:
-                    sequence.append(i + 1)
+                    count += 1
                     i += 1
-                longest = max(longest, len(sequence))
+                longest = max(longest, count)
         return longest
