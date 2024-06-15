@@ -6,14 +6,10 @@ class Solution(object):
         """
         if len(prices) < 2:
             return 0
-        left = 0
-        right = 1
-        largestProfit = 0
-        while right < len(prices):
-            if prices[left] > prices[right]:
-                left = right
-            else:
-                largestProfit = max(largestProfit, prices[right] - prices[left])
-            right += 1
-        return largestProfit
+        max_profit = 0
+        min_price = prices[0]
+        for p in prices[1:]:
+            max_profit = max(max_profit, p - min_price)
+            min_price = min(min_price, p)
+        return max_profit
 
