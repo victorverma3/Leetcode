@@ -4,28 +4,16 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        for i in range(len(board)):
-            row = set()
-            col = set()
-            for j in range(len(board)):
-                if board[i][j] in row:
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        squares = defaultdict(set)
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] in rows[i] or board[i][j] in cols[j] or board[i][j] in squares[(i//3, j//3)]:
                     return False
                 elif board[i][j] != ".":
-                    row.add(board[i][j])
-                if board[j][i] in col:
-                    return False
-                elif board[j][i] != ".":
-                    col.add(board[j][i])
-        print("rows and columns ok")
-
-        centers = [1, 4, 7]
-        for i in centers:
-            for j in centers:
-                values = set()
-                for k in range(i-1, i+2):
-                    for l in range(j-1, j+2):
-                        if board[k][l] in values:
-                            return False
-                        elif board[k][l] != ".":
-                            values.add(board[k][l])
+                    rows[i].add(board[i][j])
+                    cols[j].add(board[i][j])
+                    squares[(i//3, j//3)].add(board[i][j])
+                
         return True
