@@ -4,11 +4,6 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: int
         """
-        edgeCount = defaultdict(int)
-        for edge in edges:
-            edgeCount[edge[0]] += 1
-            edgeCount[edge[1]] += 1
-        
-        for edge in edgeCount:
-            if edgeCount[edge] == len(edgeCount) - 1:
-                return edge
+        if edges[0][0] == edges[1][0] or edges[0][0] == edges[1][1]:
+            return edges[0][0]
+        return edges[0][1]
