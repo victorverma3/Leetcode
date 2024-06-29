@@ -13,8 +13,7 @@ class Solution(object):
         
         ancestors = defaultdict(list)
         def bfs(source, graph):
-            visited = set()
-            visited.add(source)
+            visited = set([source])
             queue = [source]
             while len(queue) > 0:
                 node = queue.pop(0)
