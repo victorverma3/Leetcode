@@ -18,7 +18,7 @@ class Solution(object):
             queue = [(root, 0)]
             while len(queue) > 0:
                 node = queue.pop(0)
-                if queue == []:
+                if len(queue) == 0:
                     values.append(node[0].val)
                 elif queue[0][1] > node[1]:
                     values.append(node[0].val)
