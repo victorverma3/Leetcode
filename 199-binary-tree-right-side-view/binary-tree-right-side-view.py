@@ -15,7 +15,6 @@ class Solution(object):
             return values
 
         def bfs(root):
-            visited = set()
             queue = [(root, 0)]
             while len(queue) > 0:
                 node = queue.pop(0)
