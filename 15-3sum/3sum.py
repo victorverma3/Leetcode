@@ -4,22 +4,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        triplets = []
-        nums.sort()
-        for index, val in enumerate(nums):
-            if index > 0 and val == nums[index - 1]:
+        triples = []
+        seen = set()
+        nums = sorted(nums)
+        
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
                 continue
-            left = index + 1
-            right = len(nums) - 1
-            while left < right:
-                temp = val + nums[left] + nums[right]
-                if temp == 0:
-                    triplets.append([val, nums[left], nums[right]])
-                    left += 1
-                    while nums[left] == nums[left - 1] and left < right:
-                        left += 1
-                elif temp < 0:
-                    left += 1
-                else:
-                    right -= 1
-        return triplets
+            target = 0 - nums[i]
+            track = set()
+            for j in range(i+1, len(nums)):
+                if target - nums[j] in track:
+                    print([nums[i], target - nums[j], nums[j]])
+                    if tuple([nums[i], target - nums[j]]) not in seen:
+                        seen.add(tuple([nums[i], target - nums[j]]))
+                        triples.append([nums[i], target - nums[j], nums[j]])
+                track.add(nums[j])
+        return triples
