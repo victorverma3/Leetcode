@@ -15,7 +15,6 @@ class Solution(object):
             track = set()
             for j in range(i+1, len(nums)):
                 if target - nums[j] in track:
-                    print([nums[i], target - nums[j], nums[j]])
                     if tuple([nums[i], target - nums[j]]) not in seen:
                         seen.add(tuple([nums[i], target - nums[j]]))
                         triples.append([nums[i], target - nums[j], nums[j]])
