@@ -4,16 +4,21 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        if n == 1:
-            return ["()"]
-        else:
-            generated = self.generateParenthesis(n-1)
-            result = []
-            seen = set()
-            for value in generated:
-                for i in range(len(value)):
-                    if "(" + value[:i] + ")" + value[i:] not in seen:
-                        seen.add("(" + value[:i] + ")" + value[i:])
-                        result.append("(" + value[:i] + ")" + value[i:])
-            return result
+        stack = []
+        result = []
+
+        def backtrack(openP, closedP):
+            if openP == closedP == n:
+                result.append("".join(stack))
+            if openP < n:
+                stack.append("(")
+                backtrack(openP + 1, closedP)
+                stack.pop()
+            if closedP < openP:
+                stack.append(")")
+                backtrack(openP, closedP + 1)
+                stack.pop()
+        
+        backtrack(0, 0)
+        return result
         
