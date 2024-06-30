@@ -14,8 +14,6 @@ class Solution(object):
         for i in range(len(height)-2, -1, -1):
             maxRight[i] = max(maxRight[i+1], height[i+1])
         for i in range(len(height)):
-            print(i, maxLeft[i], maxRight[i])
-            print(max(min(maxLeft[i], maxRight[i]) - height[i], 0))
             water += max(min(maxLeft[i], maxRight[i]) - height[i], 0)
         return water
 
