@@ -4,9 +4,6 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        if len(heights) == 1:
-            return heights[0]
-
         largest = 0
         stack = []
 
