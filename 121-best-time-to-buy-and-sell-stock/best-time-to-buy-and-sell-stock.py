@@ -4,18 +4,16 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        maxRight = [0] * len(prices)
-        for i in range(len(prices) - 2, -1, -1):
-            maxRight[i] = max(maxRight[i+1], prices[i+1])
-        
         largest = 0
-        lowest = float("inf")
-        for index, price in enumerate(prices):
-            if price >= lowest:
-                continue
+        left = 0
+        right = 1
+        
+        while right < len(prices):
+            if prices[right] < prices[left]:
+                left = right
             else:
-                lowest = price
-                largest = max(largest, maxRight[index] - price)
+                largest = max(largest, prices[right] - prices[left])
+            right += 1
         
         return largest
         
