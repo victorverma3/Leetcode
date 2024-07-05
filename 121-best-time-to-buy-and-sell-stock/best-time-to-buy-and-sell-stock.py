@@ -10,12 +10,12 @@ class Solution(object):
         
         largest = 0
         lowest = float("inf")
-        for i in range(len(prices)):
-            if prices[i] >= lowest:
+        for index, price in enumerate(prices):
+            if price >= lowest:
                 continue
             else:
-                lowest = prices[i]
-                largest = max(largest, maxRight[i] - prices[i])
+                lowest = price
+                largest = max(largest, maxRight[index] - price)
         
         return largest
         
