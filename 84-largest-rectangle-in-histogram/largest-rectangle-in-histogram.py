@@ -4,8 +4,12 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
+        if len(heights) == 1:
+            return heights[0]
+
         largest = 0
         stack = []
+
         for index, val in enumerate(heights):
             if not stack or val > stack[-1][1]:
                 stack.append((index, val))
@@ -14,7 +18,7 @@ class Solution(object):
                     top = stack.pop()
                     largest = max(largest, (index - top[0]) * top[1])
                 stack.append((top[0], val))
-                
+
         for item in stack:
             largest = max(largest, (len(heights) - item[0]) * item[1])
 
