@@ -4,9 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        longest = 0
-        left = 0
-        right = 0
+        longest, left, right = 0, 0, 0
         chars = set()
 
         while right < len(s):
