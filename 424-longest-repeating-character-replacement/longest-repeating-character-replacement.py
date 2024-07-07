@@ -12,9 +12,8 @@ class Solution(object):
 
         while right < len(s):
             count[s[right]] += 1
-            max_key = max(count, key=count.get)
 
-            while (right - left + 1) - count[max(count, key=count.get)] > k:
+            while right - left + 1 - max(count.values()) > k:
                 count[s[left]] -= 1
                 left += 1
             
