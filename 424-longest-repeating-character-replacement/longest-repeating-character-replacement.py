@@ -12,14 +12,13 @@ class Solution(object):
 
         while right < len(s):
             count[s[right]] += 1
-            length = right - left + 1
             max_key = max(count, key=count.get)
-            if length - count[max_key] <= k:
-                longest = max(longest, length)
-            else:
-                while (right - left + 1) - count[max(count, key=count.get)] > k:
-                    count[s[left]] -= 1
-                    left += 1
+
+            while (right - left + 1) - count[max(count, key=count.get)] > k:
+                count[s[left]] -= 1
+                left += 1
+            
+            longest = max(longest, right - left + 1)
             right += 1
         
         return longest
