@@ -9,7 +9,7 @@ class Solution(object):
             if operation == "./":
                 continue
             elif operation == "../":
-                if stack:
+                if len(stack) > 0:
                     stack.pop()
             else:
                 stack.append(operation)
