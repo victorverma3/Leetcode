@@ -6,11 +6,11 @@ class Solution(object):
         """
         stack = []
         for operation in logs:
-            if operation == "../":
-                if len(stack) > 0:
-                    stack.pop()
-            elif operation == "./":
+            if operation == "./":
                 continue
+            elif operation == "../":
+                if stack:
+                    stack.pop()
             else:
                 stack.append(operation)
         return len(stack)
