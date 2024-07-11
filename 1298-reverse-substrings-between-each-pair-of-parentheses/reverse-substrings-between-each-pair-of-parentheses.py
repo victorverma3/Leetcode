@@ -10,17 +10,13 @@ class Solution(object):
             if char == "(":
                 openP.append(index)
             elif char == ")":
-                pairs = [(openP.pop(), index, len(pairs))] + pairs
-        
-        # print(pairs)
+                pairs = [(openP.pop(), index)] + pairs
 
         while len(pairs) > 0:
-            l, r, f = pairs.pop()
-            # print(l, r, f)
+            l, r = pairs.pop()
             temp = list(s)
             temp[l+1:r] = temp[r-1:l:-1]
             s = "".join(temp)
-            # print(s)
         
         answer = ""
         for char in s:
