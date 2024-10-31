@@ -9,10 +9,10 @@ class Solution(object):
 
         def search(row, col):
 
-            right, down, up = 0, 0, 0
             if optimal[row][col]:
                 return 1 + optimal[row][col]
 
+            right, down, up = 0, 0, 0
             if col < len(grid[0]) - 1:
                 if grid[row][col+1] > grid[row][col]:
                         right = search(row, col+1)
@@ -24,6 +24,7 @@ class Solution(object):
                         up = search(row+1, col+1)
 
             optimal[row][col] = max(right, down, up)
+            
             return 1 + optimal[row][col] 
 
         maxMoves = 0
